@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cquh23jwu6ig2"]
+[gd_scene load_steps=4 format=3 uid="uid://cquh23jwu6ig2"]
 
+[ext_resource type="Script" uid="uid://vov514qbsp0x" path="res://scenes/characters/enemies/enemy.gd" id="1_3h1xk"]
 [ext_resource type="Texture2D" uid="uid://53xmum8uktqx" path="res://scenes/characters/player/player_placeholder.png" id="1_4rh2d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3h1xk"]
 
 [node name="MonsterTemp" type="CharacterBody2D"]
+script = ExtResource("1_3h1xk")
+health = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4rh2d")

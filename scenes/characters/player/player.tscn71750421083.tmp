@@ -1,7 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bi5dtq1k882vx"]
+[gd_scene load_steps=20 format=3 uid="uid://bi5dtq1k882vx"]
 
 [ext_resource type="Script" uid="uid://bdbqjf0heg1cw" path="res://scenes/characters/player/player.gd" id="1_t61fv"]
-[ext_resource type="Texture2D" uid="uid://jc037gkuvyie" path="res://scenes/characters/player/hero_sprite_sheet.png" id="2_6avc5"]
+[ext_resource type="Texture2D" uid="uid://cpvosuyp7nxan" path="res://scenes/characters/player/hero.png" id="2_t61fv"]
 [ext_resource type="Script" uid="uid://dbu74xfxe5fyd" path="res://scenes/characters/player/states/player_state_machine.gd" id="3_6avc5"]
 [ext_resource type="Script" uid="uid://4fgsj7in1ynh" path="res://scenes/characters/player/states/running.gd" id="5_xuses"]
 [ext_resource type="Script" uid="uid://g5yhe6gcgi43" path="res://scenes/characters/player/states/combat.gd" id="6_6avc5"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t61fv"]
 height = 28.0
+
+[sub_resource type="Animation" id="Animation_6avc5"]
+resource_name = "idle"
 
 [sub_resource type="Animation" id="Animation_mk55u"]
 resource_name = "swing_up"
@@ -33,49 +36,11 @@ resource_name = "walk_up"
 
 [sub_resource type="Animation" id="Animation_djydg"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_6avc5"]
-resource_name = "idle"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_bsn6e"]
-
-[sub_resource type="Animation" id="Animation_blysn"]
-
-[sub_resource type="Animation" id="Animation_hv5x3"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xuses"]
 _data = {
 &"RESET": SubResource("Animation_djydg"),
-&"idle_down": SubResource("Animation_bsn6e"),
-&"idle_left": SubResource("Animation_blysn"),
-&"idle_right": SubResource("Animation_hv5x3"),
-&"idle_up": SubResource("Animation_6avc5"),
+&"idle": SubResource("Animation_6avc5"),
 &"run_down": SubResource("Animation_qd3e3"),
 &"run_left": SubResource("Animation_686vu"),
 &"run_right": SubResource("Animation_hss88"),
@@ -87,17 +52,14 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bsn6e"]
-radius = 20.0
-height = 48.0
+height = 26.0
 
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_t61fv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6avc5")
-hframes = 5
-vframes = 5
+texture = ExtResource("2_t61fv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_t61fv")
