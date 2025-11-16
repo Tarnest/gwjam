@@ -1,0 +1,76 @@
+[gd_scene load_steps=16 format=3 uid="uid://bi5dtq1k882vx"]
+
+[ext_resource type="Script" uid="uid://bdbqjf0heg1cw" path="res://scenes/characters/player/player.gd" id="1_t61fv"]
+[ext_resource type="Texture2D" uid="uid://cpvosuyp7nxan" path="res://scenes/characters/player/hero.png" id="2_t61fv"]
+[ext_resource type="Script" uid="uid://covqi6xbs8i1h" path="res://classes/state_machine/state_machine.gd" id="3_686vu"]
+[ext_resource type="Script" uid="uid://btw2kofrfy5rd" path="res://scenes/characters/player/states/walking.gd" id="4_mk55u"]
+[ext_resource type="Script" uid="uid://4fgsj7in1ynh" path="res://scenes/characters/player/states/running.gd" id="5_xuses"]
+[ext_resource type="Script" uid="uid://bxtsr20hcjsbh" path="res://scenes/characters/player/states/idle.gd" id="6_42irl"]
+[ext_resource type="Script" uid="uid://dtr78dln1lfa" path="res://scenes/characters/player/states.gd" id="7_3xnwo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t61fv"]
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_t61fv"]
+resource_name = "walk_up"
+
+[sub_resource type="Animation" id="Animation_686vu"]
+resource_name = "walk_left"
+
+[sub_resource type="Animation" id="Animation_hss88"]
+resource_name = "walk_right"
+
+[sub_resource type="Animation" id="Animation_qd3e3"]
+resource_name = "walk_down"
+
+[sub_resource type="Animation" id="Animation_6avc5"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_mk55u"]
+resource_name = "swing_up"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xuses"]
+_data = {
+&"idle": SubResource("Animation_6avc5"),
+&"swing_up": SubResource("Animation_mk55u"),
+&"walk_down": SubResource("Animation_qd3e3"),
+&"walk_left": SubResource("Animation_686vu"),
+&"walk_right": SubResource("Animation_hss88"),
+&"walk_up": SubResource("Animation_t61fv")
+}
+
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_t61fv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t61fv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_t61fv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_xuses")
+}
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource("3_686vu")
+metadata/_custom_type_script = "uid://covqi6xbs8i1h"
+
+[node name="Walking" type="Node2D" parent="StateMachine"]
+script = ExtResource("4_mk55u")
+metadata/_custom_type_script = "uid://du8ugmksk6yxr"
+
+[node name="Running" type="Node2D" parent="StateMachine"]
+script = ExtResource("5_xuses")
+metadata/_custom_type_script = "uid://du8ugmksk6yxr"
+
+[node name="Idle" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_42irl")
+metadata/_custom_type_script = "uid://du8ugmksk6yxr"
+
+[node name="Combat" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_3xnwo")
+metadata/_custom_type_script = "uid://du8ugmksk6yxr"

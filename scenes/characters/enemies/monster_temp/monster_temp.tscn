@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cquh23jwu6ig2"]
+
+[ext_resource type="Texture2D" uid="uid://53xmum8uktqx" path="res://scenes/characters/player/player_placeholder.png" id="1_4rh2d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3h1xk"]
+
+[node name="MonsterTemp" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4rh2d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3h1xk")
