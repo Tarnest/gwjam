@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwcd07q6a0v2x"]
+
+[ext_resource type="Script" uid="uid://bil2l72ur87gx" path="res://scenes/characters/enemies/monster_temp/bullet/bullet.gd" id="1_b0xoq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4eycv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eycv"]
+size = Vector2(10, 4)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_b0xoq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.1920929e-07, 5.9604645e-08)
+scale = Vector2(10, 4)
+texture = SubResource("CanvasTexture_4eycv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4eycv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
