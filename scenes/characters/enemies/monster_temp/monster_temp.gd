@@ -3,6 +3,8 @@ extends Enemy
 @onready var bullet_scene: PackedScene = preload("res://scenes/characters/enemies/monster_temp/bullet/bullet.tscn")
 @onready var timer: Timer = $Timer
 
+@export var bullet_speed: int
+
 func _ready() -> void:
 	timer.timeout.connect(_on_timeout)
 
@@ -15,6 +17,7 @@ func spawn_bullet():
 	
 	bullet.direction = new_direction
 	bullet.rotation = new_direction.angle()
+	bullet.speed = bullet_speed
 	add_child(bullet)
 
 func _on_timeout():

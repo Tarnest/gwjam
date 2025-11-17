@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bph5e5pfg2su2"]
+
+[ext_resource type="Texture2D" uid="uid://cbghugw4ddhwu" path="res://scenes/characters/npcs/king/king_placeholder.png" id="1_48qig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v88tg"]
+size = Vector2(32, 32)
+
+[node name="King" type="CharacterBody2D"]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_48qig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v88tg")

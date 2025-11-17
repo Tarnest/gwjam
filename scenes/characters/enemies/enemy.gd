@@ -27,4 +27,4 @@ func hit(damage: int = 5) -> void:
 	health -= damage
 
 func die() -> void:
-	print("Enemy Died")
+	queue_free()

@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+@export var speed: int = 150
 @export var health: int:
 	set(value):
 		health = value
@@ -10,7 +11,6 @@ extends CharacterBody2D
 @onready var hit_area: Area2D = $HitArea
 @onready var sprite: Sprite2D = $Sprite2D
 
-var speed: int = 150
 var last_direction: Vector2 = Vector2.ZERO
 var direction: Vector2:
 	set(value):
@@ -27,7 +27,7 @@ func _get_player_pos():
 
 func hit(damage: int = 5):
 	health -= damage
-	print(health)
+	print("Player health: " + str(health))
 
 func die():
 	print("Player died")
