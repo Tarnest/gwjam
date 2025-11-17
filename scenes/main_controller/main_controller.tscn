@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsncdj7wmv1f7"]
+[gd_scene load_steps=9 format=3 uid="uid://dsncdj7wmv1f7"]
 
 [ext_resource type="PackedScene" uid="uid://36lei1icymys" path="res://scenes/areas/main_room/main_room.tscn" id="1_n8qse"]
 [ext_resource type="PackedScene" uid="uid://bi5dtq1k882vx" path="res://scenes/characters/player/player.tscn" id="1_y6y8a"]
 [ext_resource type="PackedScene" uid="uid://bph5e5pfg2su2" path="res://scenes/characters/npcs/king/king.tscn" id="3_634p7"]
 [ext_resource type="PackedScene" uid="uid://cquh23jwu6ig2" path="res://scenes/characters/enemies/monster_temp/monster_temp.tscn" id="4_jjshj"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_1i6bc"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_rfu2m"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_1i6bc"]
+
+[sub_resource type="Resource" id="Resource_r0rda"]
+script = ExtResource("6_1i6bc")
 
 [node name="MainController" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -14,12 +20,37 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("1_y6y8a")]
 position = Vector2(0, 74)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="King" parent="." instance=ExtResource("3_634p7")]
 position = Vector2(0, -153)
 
 [node name="MonsterTemp" parent="." instance=ExtResource("4_jjshj")]
 position = Vector2(-202, -27)
 health = 100
-knockback_distance = 200
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(0, 74)
+process_callback = 0
+limit_left = -320
+limit_top = -256
+limit_right = 384
+limit_bottom = 256
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_1i6bc")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(0, 74)
+script = ExtResource("5_rfu2m")
+follow_mode = 5
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_r0rda")
+follow_damping = true
+dead_zone_width = 0.05
+dead_zone_height = 0.05
+limit_target = NodePath("../MainRoom/PlaceholderTileMapLayer")
+
+[editable path="MainRoom"]

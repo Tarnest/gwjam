@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://csdov01rgmlr5" path="res://scenes/characters/enemies/monster_temp/goblin.png" id="2_3h1xk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3h1xk"]
-height = 24.0
+radius = 8.0
+height = 16.0
 
 [node name="MonsterTemp" type="CharacterBody2D"]
 texture_filter = 1
