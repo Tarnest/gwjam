@@ -21,4 +21,5 @@ position = Vector2(0, -153)
 
 [node name="MonsterTemp" parent="." instance=ExtResource("4_jjshj")]
 position = Vector2(-202, -27)
-bullet_speed = 100
+health = 100
+knockback_distance = 200

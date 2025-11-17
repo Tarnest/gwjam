@@ -4,6 +4,7 @@ extends Enemy
 @onready var timer: Timer = $Timer
 
 @export var bullet_speed: int
+@export var bullet_damage: int
 
 func _ready() -> void:
 	timer.timeout.connect(_on_timeout)
@@ -15,10 +16,13 @@ func spawn_bullet():
 	var bullet: Bullet = bullet_scene.instantiate()
 	var new_direction: Vector2 = position.direction_to(player_pos)
 	
+	bullet.bullet_damage = bullet_damage
+	bullet.position = position
 	bullet.direction = new_direction
 	bullet.rotation = new_direction.angle()
 	bullet.speed = bullet_speed
-	add_child(bullet)
+	
+	get_tree().get_root().add_child(bullet)
 
 func _on_timeout():
 	spawn_bullet()

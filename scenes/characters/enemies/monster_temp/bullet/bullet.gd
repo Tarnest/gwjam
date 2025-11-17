@@ -3,7 +3,7 @@ extends Area2D
 
 @onready var timer: Timer = $Timer
 
-var bullet_damage: int
+var bullet_damage: int = 10
 var speed: int = 100
 var direction: Vector2 = Vector2.RIGHT
 var velocity: Vector2
@@ -22,4 +22,5 @@ func _on_timeout():
 
 func _on_body_entered(body: PhysicsBody2D):
 	if body is Player:
-		body.call("hit", 10)
+		body.call("hit", bullet_damage, direction)
+		queue_free()

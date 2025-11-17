@@ -29,4 +29,4 @@ func animate():
 
 func _on_hit_area_body_entered(body: PhysicsBody2D):
 	if body is Enemy:
-		body.call("hit")
+		body.call("hit", player.sword_damage, player.last_direction)
