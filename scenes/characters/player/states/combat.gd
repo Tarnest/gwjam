@@ -43,33 +43,26 @@ func _on_timer_timeout():
 			body.call("hit", player.sword_damage, player.last_direction)
 
 func animate():	
+	player.sprite.flip_h = false
+	
 	match player.last_direction.round():
 		Vector2.UP:
-			player.sprite.flip_h = false
 			animation_player.play("swipe_up")
 		up_right:
-			player.sprite.flip_h = false
 			animation_player.play("swipe_up")
 		up_left:
-			player.sprite.flip_h = false
 			animation_player.play("swipe_up")
 		Vector2.DOWN:
-			player.sprite.flip_h = false
 			animation_player.play("swipe_down")
 		down_left:
-			player.sprite.flip_h = false
 			animation_player.play("swipe_down")
 		down_right:
-			player.sprite.flip_h = false
 			animation_player.play("swipe_down")
 		Vector2.LEFT:
-			player.sprite.flip_h = false
-			animation_player.play("swipe_side")
+			animation_player.play("swipe_left")
 		Vector2.RIGHT:
-			player.sprite.flip_h = true
-			animation_player.play("swipe_side")
+			animation_player.play("swipe_right")
 		Vector2.ZERO:
-			player.sprite.flip_h = false
 			animation_player.play("swipe_down")
 
 func _on_hit_area_body_entered(body: PhysicsBody2D):
@@ -77,7 +70,7 @@ func _on_hit_area_body_entered(body: PhysicsBody2D):
 		bodies.push_back(body)
 
 func _on_animation_finished(anim_name: StringName):	
-	var swipe_arr: Array[StringName] = ["swipe_up", "swipe_down", "swipe_side"]
+	var swipe_arr: Array[StringName] = ["swipe_up", "swipe_down", "swipe_right", "swipe_left"]
 	
 	if anim_name in swipe_arr:
 		player.hit_area.process_mode = Node.PROCESS_MODE_DISABLED

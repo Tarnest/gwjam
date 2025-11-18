@@ -23,7 +23,6 @@ var direction: Vector2:
 
 func _ready() -> void:
 	direction = Vector2.ZERO
-	Globals.get_player_pos.connect(_get_player_pos)
 
 func _physics_process(_delta: float) -> void:
 	velocity = knockback
@@ -31,8 +30,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
-
-func _get_player_pos():
+	
 	Globals.current_player_pos = position
 
 func hit(damage: int = 5, direction_hit_from: Vector2 = Vector2.ZERO):

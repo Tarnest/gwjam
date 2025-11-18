@@ -11,7 +11,6 @@ script = ExtResource("6_1i6bc")
 
 [node name="MainController" type="Node2D"]
 script = ExtResource("1_rhfab")
-debug = true
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

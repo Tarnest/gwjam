@@ -15,31 +15,24 @@ func _physics_process(_delta: float) -> void:
 	animate()
 	
 func animate():
+	player.sprite.flip_h = false
+	
 	match player.last_direction.round():
 		Vector2.UP:
-			player.sprite.flip_h = false
 			animation_player.play("idle_up")
 		up_right:
-			player.sprite.flip_h = false
 			animation_player.play("idle_up")
 		up_left:
-			player.sprite.flip_h = false
 			animation_player.play("idle_up")
 		Vector2.DOWN:
-			player.sprite.flip_h = false
 			animation_player.play("idle_down")
 		down_left:
-			player.sprite.flip_h = false
 			animation_player.play("idle_down")
 		down_right:
-			player.sprite.flip_h = false
 			animation_player.play("idle_down")
 		Vector2.LEFT:
-			player.sprite.flip_h = false
-			animation_player.play("idle_side")
+			animation_player.play("idle_left")
 		Vector2.RIGHT:
-			player.sprite.flip_h = true
-			animation_player.play("idle_side")
+			animation_player.play("idle_right")
 		Vector2.ZERO:
-			player.sprite.flip_h = false
 			animation_player.play("idle_down")
