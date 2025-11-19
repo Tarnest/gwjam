@@ -14,6 +14,8 @@ script = ExtResource("1_rhfab")
 debug = true
 metadata/_edit_lock_ = true
 
+[node name="CurrentRoom" type="Node2D" parent="."]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 visible = false

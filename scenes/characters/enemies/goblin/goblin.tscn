@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cquh23jwu6ig2"]
+[gd_scene load_steps=22 format=3 uid="uid://c1r1ke61iay76"]
 
 [ext_resource type="Script" uid="uid://bktgns2qb2v70" path="res://scenes/characters/enemies/goblin/goblin.gd" id="1_klaxi"]
 [ext_resource type="Texture2D" uid="uid://bqh4xqfh5giam" path="res://scenes/characters/enemies/goblin/goblin_sprite_sheet.png" id="2_p1lt1"]
