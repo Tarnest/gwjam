@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 @onready var hit_area: Area2D = $HitArea
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var hit_flash: AnimationPlayer = %HitFlash
 
 var knockback: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO
@@ -36,6 +37,7 @@ func _physics_process(_delta: float) -> void:
 func hit(damage: int = 5, direction_hit_from: Vector2 = Vector2.ZERO):
 	health -= damage
 	print("Player health: " + str(health))
+	hit_flash.play("hit")
 	knockback = direction_hit_from * knockback_distance
 
 func die():

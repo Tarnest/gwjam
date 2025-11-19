@@ -30,7 +30,6 @@ tile_set = SubResource("TileSet_pkkg4")
 position = Vector2(1, -178)
 
 [node name="MonsterTemp" parent="." instance=ExtResource("4_hu6b0")]
-position = Vector2(-110, -2)
 
 [node name="MonsterTemp2" parent="." instance=ExtResource("4_hu6b0")]
 position = Vector2(127, -1)

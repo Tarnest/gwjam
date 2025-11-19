@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwcd07q6a0v2x"]
 
-[ext_resource type="Script" uid="uid://bil2l72ur87gx" path="res://scenes/characters/enemies/monster_temp/bullet/bullet.gd" id="1_b0xoq"]
+[ext_resource type="Script" uid="uid://bil2l72ur87gx" path="res://scenes/characters/enemies/goblin/bullet/bullet.gd" id="1_b0xoq"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4eycv"]
 
